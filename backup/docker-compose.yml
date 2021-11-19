@@ -5,8 +5,8 @@ services:
     image: ethereum/client-go
     restart: unless-stopped
     ports:
-      - "172.18.194.13:30303:30303"
-      - "172.18.194.13:30303:30303/udp"
+      - "172.18.194.13:30304:30304"
+      - "172.18.194.13:30304:30304/udp"
       - "172.18.194.13:7891:7891"
       - "172.18.194.13:7892:7892"
     volumes:
@@ -14,6 +14,7 @@ services:
     stop_signal: SIGINT
     stop_grace_period: 2m
     command:
+      - --port=30304
       - --http
       - --http.api
       - "eth,net,web3"
