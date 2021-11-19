@@ -10,7 +10,7 @@ services:
       - "7891:7891"
       - "7892:7892"
     volumes:
-      - ./chaindata:/chaindata
+      - ./eth:/master
     stop_signal: SIGINT
     stop_grace_period: 2m
     command:
