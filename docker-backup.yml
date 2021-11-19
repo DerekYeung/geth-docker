@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  geth:
+  backup:
     image: ethereum/client-go
     restart: unless-stopped
     ports:
