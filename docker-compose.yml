@@ -10,7 +10,7 @@ services:
       - "7891:7891"
       - "7892:7892"
     volumes:
-      - /eth:/master
+      - /eth:/eth
     stop_signal: SIGINT
     stop_grace_period: 2m
     command:
@@ -28,7 +28,7 @@ services:
       - --ws.api
       - "eth,net,web3"
       - --datadir
-      - "/master"
+      - "/eth/master"
       # Minimum number of executable transaction slots guaranteed per account (default: 16)
       # - --txpool.accountslots=16
       # Maximum number of non-executable transaction slots for all accounts (default: 1024)
