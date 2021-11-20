@@ -67,14 +67,3 @@ services:
       options:
         max-size: "20m"
         max-file: "10"
-
-networks:
-    testnet:
-        driver: macvlan
-        driver_opts:
-            com.docker.network.enable_ipv4: "true"
-            parent: eth3
-        ipam:
-            config:
-                - subnet: 192.168.2.0/24
-                  gateway: 192.168.2.1
