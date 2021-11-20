@@ -6,8 +6,8 @@ networks:
       parent: eth0
     ipam:
       config:
-        - subnet: 172.16.10.0/24
-          gateway: 172.16.10.1
+        - subnet: 172.18.10.0/24
+          gateway: 172.18.10.1
 
 services:
   testnet:
