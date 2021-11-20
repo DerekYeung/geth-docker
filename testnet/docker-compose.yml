@@ -1,6 +1,6 @@
 version: "2"
 networks:
-  ipvlan40:
+  ntest:
     external: true
 
 services:
@@ -13,7 +13,7 @@ services:
       - "7891:7891"
       - "7892:7892"
     networks:
-      - ipvlan40
+      - ntest
     volumes:
       - /data:/data
     stop_signal: SIGINT
