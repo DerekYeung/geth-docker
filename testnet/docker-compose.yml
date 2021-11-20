@@ -5,10 +5,13 @@ services:
     image: ethereum/client-go
     restart: unless-stopped
     ports:
-      - "172.18.194.15:30304:30304"
-      - "172.18.194.15:30304:30304/udp"
-      - "172.18.194.15:7891:7891"
-      - "172.18.194.15:7892:7892"
+      - "30304:30304"
+      - "30304:30304/udp"
+      - "7891:7891"
+      - "7892:7892"
+    networks:
+      vlan:
+        ipv4_address: 192.168.0.60
     volumes:
       - /data:/data
     stop_signal: SIGINT
@@ -49,12 +52,19 @@ services:
       # - --gcmode=full
     links:
       - geth
-    networks:
-      default:
-        external:
-          name: testnet
     logging:
       driver: "json-file"
       options:
         max-size: "20m"
         max-file: "10"
+networks:
+  dockervlan:
+    name: dockervlan
+    driver: macvlan
+    driver_opts:
+      parent: eth3
+    ipam:
+      config:
+        - subnet: "192.168.0.0/24"
+          ip_range: "192.168.0.64/26"
+          gateway: "192.168.0.1"
