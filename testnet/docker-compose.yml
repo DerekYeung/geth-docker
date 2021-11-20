@@ -3,7 +3,7 @@ networks:
   testnet:
     driver: macvlan
     driver_opts:
-      parent: eth3
+      parent: eth0
     ipam:
       config:
         - subnet: 172.16.10.0/24
