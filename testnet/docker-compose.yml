@@ -10,8 +10,8 @@ services:
       - "7891:7891"
       - "7892:7892"
     networks:
-      vlan:
-        ipv4_address: 192.168.0.60
+      testnet:
+        ipv4_address: 192.168.2.10
     volumes:
       - /data:/data
     stop_signal: SIGINT
@@ -59,13 +59,12 @@ services:
         max-file: "10"
 
 networks:
-  dockervlan:
-    name: dockervlan
-    driver: macvlan
-    driver_opts:
-      parent: eth0
-    ipam:
-      config:
-        - subnet: "192.168.0.0/24"
-          ip_range: "192.168.0.64/26"
-          gateway: "192.168.0.1"
+    testnet:
+        driver: macvlan
+        driver_opts:
+            parent: eth3
+        ipam:
+            config:
+                - 
+                  subnet: 192.168.2.0/24
+                  gateway: 192.168.2.1
