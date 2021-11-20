@@ -1,13 +1,7 @@
-version: "2.4"
+version: "2"
 networks:
-  testnet:
-    driver: ipvlan
-    driver_opts:
-      parent: eth3
-    ipam:
-      config:
-        - subnet: 172.18.10.0/24
-          gateway: 172.18.10.1
+  ipvlan40:
+    external: true
 
 services:
   testnet:
@@ -19,7 +13,7 @@ services:
       - "7891:7891"
       - "7892:7892"
     networks:
-      - testnet
+      - ipvlan40
     volumes:
       - /data:/data
     stop_signal: SIGINT
