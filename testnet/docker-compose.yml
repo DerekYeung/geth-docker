@@ -21,7 +21,7 @@ services:
       - "7892:7892"
     networks:
       testnet:
-        ipv4_address: 172.18.194.16
+        ipv4_address: 172.18.194.10
     volumes:
       - /data:/data
     stop_signal: SIGINT
