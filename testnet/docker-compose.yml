@@ -3,12 +3,12 @@ networks:
   testnet:
     driver: macvlan
     driver_opts:
-      # 宿主机网卡
+      com.docker.network.enable_ipv4: "true"
       parent: eth3
     ipam:
       config:
         - subnet: 192.168.2.0/24
-          #gateway: 192.168.2.1
+          gateway: 192.168.2.1
 
 services:
   testnet:
