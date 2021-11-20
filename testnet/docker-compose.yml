@@ -1,19 +1,14 @@
-version: "2"
-networks:
-  ntest50:
-    external: true
+version: "3"
 
 services:
   testnet:
     image: ethereum/client-go
     restart: unless-stopped
     ports:
-      - "30304:30304"
-      - "30304:30304/udp"
-      - "7891:7891"
-      - "7892:7892"
-    networks:
-      - ntest50
+      - "172.18.194.15:30304:30304"
+      - "172.18.194.15:30304:30304/udp"
+      - "172.18.194.15:7891:7891"
+      - "172.18.194.15:7892:7892"
     volumes:
       - /data:/data
     stop_signal: SIGINT
@@ -52,8 +47,6 @@ services:
       - --syncmode=fast
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
-    links:
-      - geth
     logging:
       driver: "json-file"
       options:
