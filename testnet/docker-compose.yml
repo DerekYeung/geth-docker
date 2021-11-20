@@ -1,6 +1,6 @@
 version: "2.4"
 networks:
-  testnet:
+  nodetestnet:
     driver: macvlan
     driver_opts:
       com.docker.network.enable_ipv4: "true"
@@ -8,7 +8,7 @@ networks:
     ipam:
       config:
         - subnet: 172.18.0.0/16
-          gateway: 172.18.0.1
+          gateway: 172.18.194.1
 
 services:
   testnet:
@@ -20,8 +20,8 @@ services:
       - "7891:7891"
       - "7892:7892"
     networks:
-      testnet:
-        ipv4_address: 172.18.1.16
+      nodetestnet:
+        ipv4_address: 172.18.194.17
     volumes:
       - /data:/data
     stop_signal: SIGINT
