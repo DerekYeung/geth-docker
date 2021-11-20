@@ -7,8 +7,8 @@ networks:
       parent: eth3
     ipam:
       config:
-        - subnet: 192.168.2.0/24
-          gateway: 192.168.2.1
+        - subnet: 172.18.194.0/16
+          gateway: 172.18.194.1
 
 services:
   testnet:
@@ -21,7 +21,7 @@ services:
       - "7892:7892"
     networks:
       testnet:
-        ipv4_address: 192.168.2.10
+        ipv4_address: 172.18.194.16
     volumes:
       - /data:/data
     stop_signal: SIGINT
