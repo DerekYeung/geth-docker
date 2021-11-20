@@ -46,6 +46,8 @@ services:
       - --syncmode=fast
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
+    links:
+      - geth
     logging:
       driver: "json-file"
       options:
