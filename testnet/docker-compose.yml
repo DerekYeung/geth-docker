@@ -57,12 +57,13 @@ services:
       options:
         max-size: "20m"
         max-file: "10"
+
 networks:
   dockervlan:
     name: dockervlan
     driver: macvlan
     driver_opts:
-      parent: eth3
+      parent: eth0
     ipam:
       config:
         - subnet: "192.168.0.0/24"
