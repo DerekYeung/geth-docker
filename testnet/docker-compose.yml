@@ -1,9 +1,9 @@
 version: "2.4"
 networks:
   testnet:
-    driver: macvlan
+    driver: ipvlan
     driver_opts:
-      parent: eth0
+      parent: eth3
     ipam:
       config:
         - subnet: 172.18.10.0/24
