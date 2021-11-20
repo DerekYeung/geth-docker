@@ -47,6 +47,10 @@ services:
       - --syncmode=fast
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
+    networks:
+    default:
+      external:
+        name: testnet
     links:
       - geth
     logging:
