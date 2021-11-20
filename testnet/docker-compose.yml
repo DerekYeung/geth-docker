@@ -47,12 +47,12 @@ services:
       - --syncmode=fast
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
-    networks:
-    default:
-      external:
-        name: testnet
     links:
       - geth
+    networks:
+      default:
+        external:
+          name: testnet
     logging:
       driver: "json-file"
       options:
