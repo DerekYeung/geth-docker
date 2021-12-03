@@ -2,7 +2,7 @@ version: "3"
 
 services:
   backup:
-    image: mev-geth
+    image: openmev/mev-geth
     restart: unless-stopped
     ports:
       - "172.18.194.13:30304:30304"
