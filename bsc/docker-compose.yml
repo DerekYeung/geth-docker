@@ -28,7 +28,7 @@ services:
       - --ws.api
       - "eth,net,web3"
       - --config
-      - "/data/bsc/config.toml"
+      - "/data/config.toml"
       - --datadir
       - "/data/master"
       # Minimum number of executable transaction slots guaranteed per account (default: 16)
