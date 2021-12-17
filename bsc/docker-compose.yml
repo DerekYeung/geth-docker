@@ -14,6 +14,8 @@ services:
     stop_signal: SIGINT
     stop_grace_period: 2m
     command:
+      - --networkid
+      - "56"
       - --http
       - --http.api
       - "eth,net,web3"
