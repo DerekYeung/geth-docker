@@ -43,6 +43,8 @@ services:
       # - --txpool.lifetime=3h0m0s
       # Megabytes of memory allocated to internal caching (default: 1024)
       - --cache=65536
+      - --rpc.allow-unprotected-txs
+      - --txlookuplimit=0
       # Maximum number of network peers (network disabled if set to 0) (default: 25)
       - --maxpeers=150
       # Blockchain sync mode ("fast", "full", or "light")
