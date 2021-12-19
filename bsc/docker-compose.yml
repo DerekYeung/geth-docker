@@ -5,8 +5,8 @@ services:
     image: bsc
     restart: unless-stopped
     ports:
-      - "30303:30303"
-      - "30303:30303/udp"
+      - "30311:30311"
+      - "30311:30311/udp"
       - "7891:7891"
       - "7892:7892"
     volumes:
