@@ -12,21 +12,21 @@ services:
     stop_signal: SIGINT
     stop_grace_period: 2m
     command:
-      - testnet
-      - txindex
-      - datadir
+      - -testnet
+      - -txindex
+      - -datadir
       - "/data/bsv"
-      - excessiveblocksize=4000000000,
-      - maxstackmemoryusageconsensus=200000000
-      - maxmempool=16000
-      - rpcport=40001
-      - rest
-      - printtoconsole=0
-      - rpcuser=user
-      - rpcpassword=password
-      - zmqpubrawtx=tcp://127.0.0.1:40002
-      - rpcthreads=10
-      - maxconnections=32
+      - -excessiveblocksize=4000000000,
+      - -maxstackmemoryusageconsensus=200000000
+      - -maxmempool=16000
+      - -rpcport=40001
+      - -rest
+      - -printtoconsole=0
+      - -rpcuser=user
+      - -rpcpassword=password
+      - -zmqpubrawtx=tcp://127.0.0.1:40002
+      - -rpcthreads=10
+      - -maxconnections=32
     logging:
       driver: "json-file"
       options:
