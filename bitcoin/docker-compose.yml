@@ -23,7 +23,7 @@ services:
   electrumx:
     image: electrumx
     environment:
-      - DAEMON_URL=http://user:password@127.0.0.1:18332/
+      - DAEMON_URL=http://user:password@127.0.0.1:18333/
       - PEER_DISCOVERY=self
       - DB_DIRECTORY=/data
       - SERVICES=tcp://:50001
