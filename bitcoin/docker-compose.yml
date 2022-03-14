@@ -3,7 +3,7 @@ services:
   bitcoind:
     image: bitcoin-sv/bitcoin-sv
     # specify additional command line arguments here
-    command: bitcoind -testnet
+    command: bitcoind -testnet -datadir=/data/bsv
     healthcheck:
       test: ["CMD", "/entrypoint.sh", "bitcoin-cli", "getinfo"]
     ports:
