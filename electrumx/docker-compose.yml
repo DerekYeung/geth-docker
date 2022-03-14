@@ -1,25 +1,5 @@
 version: "3"
 services:
-  bitcoind:
-    image: bitcoinsv/bitcoin-sv
-    # specify additional command line arguments here
-    command: bitcoind -testnet -txindex
-    healthcheck:
-      test: ["CMD", "/entrypoint.sh", "bitcoin-cli", "getinfo"]
-    ports:
-      # change to 18333 if running testnet, or 9333 if running on STN
-      - "18333:18333"
-    volumes:
-      - /eth/bsv:/data
-    networks:
-      - bitcoin
-  bitcoin-cli:
-    image: bitcoinsv/bitcoin-sv
-    entrypoint: ["/entrypoint.sh", "bitcoin-cli"]
-    command: "getinfo"
-    depends_on:
-      - bitcoind
-    network_mode: service:bitcoind
   electrumx:
     image: electrumx
     environment:
@@ -31,8 +11,6 @@ services:
       - /eth/electrumx:/data
     ports:
       - "50001:50001" # comment out to disable TCP port (plaintext)
-    depends_on:
+    links:
       - bitcoind
 
-networks:
-  bitcoin:
