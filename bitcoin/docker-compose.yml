@@ -1,34 +1,28 @@
 version: "3"
-
 services:
-  bsv:
-    image: bitcoinsv/bitcoin-sv
-    restart: unless-stopped
+  bitcoind:
+    image: bitcoin-sv/bitcoin-sv
+    # specify additional command line arguments here
+    command: bitcoind -testnet
+    healthcheck:
+      test: ["CMD", "/entrypoint.sh", "bitcoin-cli", "getinfo"]
     ports:
-      - "40001:40001"
-      - "40002:40002"
+      # change to 18333 if running testnet, or 9333 if running on STN
+      - "18333:18333"
     volumes:
       - /data:/data
-    stop_signal: SIGINT
-    stop_grace_period: 2m
-    command:
-      - -testnet
-      - -txindex
-      - -datadir
-      - "/data/bsv"
-      - -excessiveblocksize=4000000000,
-      - -maxstackmemoryusageconsensus=200000000
-      - -maxmempool=16000
-      - -rpcport=40001
-      - -rest
-      - -printtoconsole=0
-      - -rpcuser=user
-      - -rpcpassword=password
-      - -zmqpubrawtx=tcp://127.0.0.1:40002
-      - -rpcthreads=10
-      - -maxconnections=32
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "20m"
-        max-file: "10"
+    networks:
+      - bitcoin
+  bitcoin-cli:
+    image: bitcoin-sv/bitcoin-sv
+    entrypoint: ["/entrypoint.sh", "bitcoin-cli"]
+    command: ""
+    depends_on:
+      - bitcoind
+    network_mode: service:bitcoind
+
+networks:
+  bitcoin:
+
+volumes:
+  bitcoin-data:
