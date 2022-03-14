@@ -10,7 +10,7 @@ services:
       # change to 18333 if running testnet, or 9333 if running on STN
       - "18333:18333"
     volumes:
-      - /data/bsv:/data
+      - /eth/bsv:/data
     networks:
       - bitcoin
   # bitcoin-cli:
