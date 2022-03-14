@@ -16,7 +16,6 @@ services:
   bitcoin-cli:
     image: bitcoinsv/bitcoin-sv
     entrypoint: ["/entrypoint.sh", "bitcoin-cli"]
-    command: ""
     depends_on:
       - bitcoind
     network_mode: service:bitcoind
