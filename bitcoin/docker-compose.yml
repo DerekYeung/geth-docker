@@ -11,28 +11,10 @@ services:
       - "18333:18333"
     volumes:
       - /eth/bsv:/data
-    networks:
-      - bitcoin
-  bitcoin-cli:
-    image: bitcoinsv/bitcoin-sv
-    entrypoint: ["/entrypoint.sh", "bitcoin-cli"]
-    command: "getinfo"
-    depends_on:
-      - bitcoind
-    network_mode: service:bitcoind
-  electrumx:
-    image: electrumx
-    environment:
-      - DAEMON_URL=http://user:password@0.0.0.0:18333/
-      - PEER_DISCOVERY=self
-      - DB_DIRECTORY=/data
-      - SERVICES=tcp://:50001
-    volumes:
-      - /eth/electrumx:/data
-    ports:
-      - "50001:50001" # comment out to disable TCP port (plaintext)
-    depends_on:
-      - bitcoind
-
-networks:
-  bitcoin:
+  # bitcoin-cli:
+  #   image: bitcoinsv/bitcoin-sv
+  #   entrypoint: ["/entrypoint.sh", "bitcoin-cli"]
+  #   command: "getinfo"
+  #   depends_on:
+  #     - bitcoind
+  #   network_mode: service:bitcoind
