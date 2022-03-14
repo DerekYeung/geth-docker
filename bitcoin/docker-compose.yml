@@ -13,12 +13,13 @@ services:
       - /data:/data
     networks:
       - bitcoin
-  bitcoin-cli:
-    image: bitcoinsv/bitcoin-sv
-    entrypoint: ["/entrypoint.sh", "bitcoin-cli"]
-    depends_on:
-      - bitcoind
-    network_mode: service:bitcoind
+  # bitcoin-cli:
+  #   image: bitcoinsv/bitcoin-sv
+  #   entrypoint: ["/entrypoint.sh", "bitcoin-cli"]
+  #   command: ""
+  #   depends_on:
+  #     - bitcoind
+  #   network_mode: service:bitcoind
 
 networks:
   bitcoin:
