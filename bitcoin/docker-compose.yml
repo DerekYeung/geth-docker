@@ -1,7 +1,7 @@
 version: "3"
 services:
   bitcoind:
-    image: bitcoin-sv/bitcoin-sv
+    image: bitcoinsv/bitcoin-sv
     # specify additional command line arguments here
     command: bitcoind -testnet -datadir=/data/bsv
     healthcheck:
@@ -14,7 +14,7 @@ services:
     networks:
       - bitcoin
   bitcoin-cli:
-    image: bitcoin-sv/bitcoin-sv
+    image: bitcoinsv/bitcoin-sv
     entrypoint: ["/entrypoint.sh", "bitcoin-cli"]
     command: ""
     depends_on:
