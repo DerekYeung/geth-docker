@@ -20,6 +20,22 @@ services:
     depends_on:
       - bitcoind
     network_mode: service:bitcoind
+  electrumx:
+      image: electrumx
+      environment:
+        - DAEMON_URL=http://user:password@127.0.0.1:18332/
+        - PEER_DISCOVERY=self
+        - DB_DIRECTORY=/data/electrumx
+        - SERVICES=tcp://:50001,ssl://:50002,wss://:50004,rpc://0.0.0.0:8000
+      volumes:
+        - type: bind
+          source: .electrum
+          target: /data/electrumx
+      ports:
+        - "50001:50001" # comment out to disable TCP port (plaintext)
+        - "50002:50002"
+        - "50004:50004"
+        - "8000:8000"
 
 networks:
   bitcoin:
