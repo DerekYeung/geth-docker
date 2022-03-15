@@ -1,18 +1,19 @@
 version: "3"
 services:
   bitcoind:
+    platform: linux/arm64/v8
     image: bitcoinsv/bitcoin-sv
     # specify additional command line arguments here
-    command: bitcoind -testnet -txindex -rpcport=18332 -rest -rpcthreads=10 -zmqpubrawtx=tcp://0.0.0.0:28332
+    command: bitcoind -testnet -txindex -rpcport=18332 -rest -zmqpubrawtx=tcp://0.0.0.0:28332
     healthcheck:
       test: ["CMD", "/entrypoint.sh", "bitcoin-cli", "getinfo"]
     ports:
       # change to 18333 if running testnet, or 9333 if running on STN
-      - "172.18.194.12:18332:18332"
-      - "172.18.194.12:18333:18333"
-      - "172.18.194.12:18332:18332"
+      - "18332:18332"
+      - "18333:18333"
+      - "28332:28332"
     volumes:
-      - /eth/bsv:/data
+      - /Users/derek/data/bsv:/data
   # bitcoin-cli:
   #   image: bitcoinsv/bitcoin-sv
   #   entrypoint: ["/entrypoint.sh", "bitcoin-cli"]
