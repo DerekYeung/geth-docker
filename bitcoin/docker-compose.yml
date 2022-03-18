@@ -12,7 +12,7 @@ services:
       - "172.19.32.22:8333:8333"
       - "172.19.32.22:28332:28332"
     volumes:
-      - /eth/bsv:/data
+      - /data/bsv:/data
   # bitcoin-cli:
   #   image: bitcoinsv/bitcoin-sv
   #   entrypoint: ["/entrypoint.sh", "bitcoin-cli"]
