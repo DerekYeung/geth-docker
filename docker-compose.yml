@@ -5,10 +5,10 @@ services:
     image: ethereum/client-go
     restart: unless-stopped
     ports:
-      - "30303:30303"
-      - "30303:30303/udp"
-      - "7891:7891"
-      - "7892:7892"
+      - "172.19.32.18:30303:30303"
+      - "172.19.32.18:30303:30303/udp"
+      - "172.19.32.18:7891:7891"
+      - "172.19.32.18:7892:7892"
     volumes:
       - /data/eth:/eth
     stop_signal: SIGINT
