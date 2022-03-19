@@ -15,7 +15,6 @@ RUN cd /electrumx* && python3 setup.py install
 
 ENV SERVICES="tcp://:50001"
 ENV COIN=BitcoinSV
-ENV NET=testnet
 ENV ALLOW_ROOT=true
 ENV DB_ENGINE=rocksdb
 ENV MAX_SEND=20000000
