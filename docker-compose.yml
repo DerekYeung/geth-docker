@@ -46,6 +46,8 @@ services:
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
       - --targetgaslimit=150000000
+      - --dev.gaslimit=150000000
+      - --rpc.gascap=0
     logging:
       driver: "json-file"
       options:
