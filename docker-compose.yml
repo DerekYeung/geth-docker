@@ -45,6 +45,7 @@ services:
       - --syncmode=snap
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
+      - --targetgaslimit=150000000
     logging:
       driver: "json-file"
       options:
