@@ -21,7 +21,7 @@ services:
       - --http.vhosts=*
       - --http.port=7891
       - --http.corsdomain=*
-      - --rpc.gascap=0
+      - --rpc.gascap=15000000000000000
       - --ws
       - --ws.origins=*
       - --ws.addr=0.0.0.0
