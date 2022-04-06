@@ -21,6 +21,7 @@ services:
       - --http.vhosts=*
       - --http.port=7891
       - --http.corsdomain=*
+      - --rpc.gascap=0
       - --ws
       - --ws.origins=*
       - --ws.addr=0.0.0.0
@@ -45,8 +46,6 @@ services:
       - --syncmode=snap
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
-      - --targetgaslimit=150000000
-      - --rpc.gascap=0
     logging:
       driver: "json-file"
       options:
