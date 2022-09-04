@@ -7,8 +7,8 @@ services:
     ports:
       - "30303:30303"
       - "30303:30303/udp"
-      - "8891:8891"
-      - "8892:8892"
+      - "38891:38891"
+      - "38892:38892"
     volumes:
       - /eth:/eth
     stop_signal: SIGINT
@@ -21,13 +21,13 @@ services:
       - "eth,net,web3"
       - --http.addr=0.0.0.0
       - --http.vhosts=*
-      - --http.port=7891
+      - --http.port=38891
       - --http.corsdomain=*
       - --rpc.gascap=15000000000000000
       - --ws
       - --ws.origins=*
       - --ws.addr=0.0.0.0
-      - --ws.port=7892
+      - --ws.port=38892
       - --ws.api
       - "eth,net,web3"
       - --datadir
