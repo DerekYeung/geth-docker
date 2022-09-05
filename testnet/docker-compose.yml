@@ -15,7 +15,7 @@ services:
     stop_grace_period: 2m
     command:
       - --port=30304
-      - --ropsten
+      - --goerli
       - --http
       - --http.api
       - "eth,net,web3"
@@ -44,7 +44,7 @@ services:
       # Maximum number of network peers (network disabled if set to 0) (default: 25)
       - --maxpeers=50
       # Blockchain sync mode ("fast", "full", or "light")
-      - --syncmode=fast
+      - --syncmode=snap
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
     logging:
