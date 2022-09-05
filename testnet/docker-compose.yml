@@ -15,7 +15,7 @@ services:
     stop_grace_period: 2m
     command:
       - --port=30304
-      - --ropsten
+      - --goerli
       - --http
       - --http.api
       - "eth,net,web3"
