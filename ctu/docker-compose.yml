@@ -27,7 +27,7 @@ services:
       - --ws.addr=0.0.0.0
       - --ws.port=8892
       - --ws.api
-      - "eth,net,web3"
+      - "eth,net,web3,engine"
       - --datadir
       - "/eth/master"
       # Minimum number of executable transaction slots guaranteed per account (default: 16)
