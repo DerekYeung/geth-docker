@@ -67,7 +67,6 @@ services:
     volumes:
       - /eth:/eth
     command: [
-      "beacon-chain",
       "--execution-endpoint=/eth/master/geth.ipc",
       "--datadir=/eth/cs/master"
     ]
