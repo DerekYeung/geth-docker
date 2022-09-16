@@ -12,7 +12,7 @@ services:
     volumes:
       - /eth:/eth
     stop_signal: SIGINT
-    stop_grace_period: 2m
+    stop_grace_period: 30m
     command:
       - --http
       - --http.api
@@ -46,6 +46,31 @@ services:
       - --syncmode=snap
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "10"
+  prysm:
+    image: gcr.io/prysmaticlabs/prysm/beacon-chain:stable
+    restart: unless-stopped
+    ports:
+      - "8545:8545"
+      - "3500:3500"
+      - "4000:4000"
+      - "13000:13000"
+      - "12000:12000/udp"
+    stop_signal: SIGINT
+    stop_grace_period: 30m
+    depends_on:
+      - geth
+    volumes:
+      - /eth:/eth
+    command: [
+      "beacon-chain",
+      "--execution-endpoint=/eth/master/geth.ipc",
+      "--datadir=/eth/cs/master"
+    ]
     logging:
       driver: "json-file"
       options:
