@@ -67,6 +67,7 @@ services:
     volumes:
       - /eth:/eth
     command: [
+      "--accept-terms-of-use",
       "--execution-endpoint=/eth/master/geth.ipc",
       "--datadir=/eth/cs/master"
     ]
