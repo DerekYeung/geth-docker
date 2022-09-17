@@ -72,7 +72,9 @@ services:
       "--monitoring-host=0.0.0.0",
       "--accept-terms-of-use",
       "--execution-endpoint=/eth/master/geth.ipc",
-      "--datadir=/eth/cs/master"
+      "--datadir=/eth/cs/master",
+      "--checkpoint-sync-url=https://beaconstate.ethstaker.cc",
+      "--genesis-beacon-api-url=https://beaconstate.ethstaker.cc"
     ]
     logging:
       driver: "json-file"
