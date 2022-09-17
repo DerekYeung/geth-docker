@@ -3,7 +3,7 @@ version: "3"
 services:
   geth:
     image: ethereum/client-go
-    restart: "no"
+    restart: unless-stopped
     ports:
       - "30303:30303"
       - "30303:30303/udp"
@@ -53,7 +53,7 @@ services:
         max-file: "10"
   prysm:
     image: gcr.io/prysmaticlabs/prysm/beacon-chain:stable
-    restart: "no"
+    restart: unless-stopped
     ports:
       - "8545:8545"
       - "3500:3500"
