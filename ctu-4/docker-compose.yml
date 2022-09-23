@@ -31,6 +31,8 @@ services:
       - "eth,net,web3,engine"
       - --datadir
       - "/eth/master"
+      - --bootnodes
+      - "enode://952c925e89394c653863446ae930326a1cdde9762ca494fe8ba951292aa727f47544c50cfd91525c8c581a4910cc5cba6faf6fcdec1965033ac50f3a780863b2@192.168.1.201:30301"
       # Minimum number of executable transaction slots guaranteed per account (default: 16)
       # - --txpool.accountslots=16
       # Maximum number of non-executable transaction slots for all accounts (default: 1024)
