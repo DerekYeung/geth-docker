@@ -81,7 +81,7 @@ services:
       "--accept-terms-of-use",
       "--execution-endpoint=/eth/master/geth.ipc",
       "--datadir=/eth/cs/master",
-      "--peer=/ip4/192.168.1.201/tcp/13001/p2p/16Uiu2HAm5Qxi9vwHz4znkButRcxZ14p4LqjJdpucH9nfmLxhwKTC"
+      "--peer=/ip4/118.113.189.47/tcp/13001/p2p/16Uiu2HAm5Qxi9vwHz4znkButRcxZ14p4LqjJdpucH9nfmLxhwKTC"
     ]
     logging:
       driver: "json-file"
