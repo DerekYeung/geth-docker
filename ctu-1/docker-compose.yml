@@ -31,6 +31,8 @@ services:
       - "eth,net,web3,engine"
       - --datadir
       - "/eth/master"
+      # - --bootnodes
+      # - "enode://b93f61aab106c112942f6b3da1a98cad983cdb4a769c6a179fe5a5b84b98b2ff8a87721b476ec002d9a3b8dbc49d09e44bcc8c417005e16eabc9485f3b708817@192.168.1.204:30304,node://6b545d268bb671011eeeece346647dc53036a51110d3dc61b61e00c2393bda595294ac66e2eb6f7f0483998cf4712c51afa641680318a48a03b4a4fd2e85c80d@127.0.0.1:30302"
       # Minimum number of executable transaction slots guaranteed per account (default: 16)
       # - --txpool.accountslots=16
       # Maximum number of non-executable transaction slots for all accounts (default: 1024)
@@ -59,6 +61,7 @@ services:
       - "8545:8545"
       - "3500:3500"
       - "4000:4000"
+      - "8080:8080"
       - "13001:13001"
       - "12001:12001/udp"
     stop_signal: SIGINT
