@@ -81,9 +81,7 @@ services:
       "--p2p-udp-port=12001",
       "--accept-terms-of-use",
       "--execution-endpoint=/eth/master/geth.ipc",
-      "--datadir=/eth/cs/master",
-      "--checkpoint-sync-url=https://beaconstate.ethstaker.cc",
-      "--genesis-beacon-api-url=https://beaconstate.ethstaker.cc"
+      "--datadir=/eth/cs/master"
     ]
     logging:
       driver: "json-file"
