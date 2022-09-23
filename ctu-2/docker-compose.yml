@@ -1,0 +1,86 @@
+version: "3"
+
+services:
+  geth:
+    image: ethereum/client-go
+    restart: "no"
+    ports:
+      - "30302:30302"
+      - "30302:30302/udp"
+      - "8891:8891"
+      - "8892:8892"
+    volumes:
+      - /eth:/eth
+    stop_signal: SIGINT
+    stop_grace_period: 30m
+    command:
+      - --port=30302
+      - --http
+      - --http.api
+      - "eth,net,web3"
+      - --http.addr=0.0.0.0
+      - --http.vhosts=*
+      - --http.port=8891
+      - --http.corsdomain=*
+      - --rpc.gascap=15000000000000000
+      - --ws
+      - --ws.origins=*
+      - --ws.addr=0.0.0.0
+      - --ws.port=8892
+      - --ws.api
+      - "eth,net,web3,engine"
+      - --datadir
+      - "/eth/master"
+      # Minimum number of executable transaction slots guaranteed per account (default: 16)
+      # - --txpool.accountslots=16
+      # Maximum number of non-executable transaction slots for all accounts (default: 1024)
+      # --txpool.globalqueue=1024
+      # Maximum number of executable transaction slots for all accounts (default: 4096)
+      # - --txpool.globalslots=10000
+      # Maximum amount of time non-executable transaction are queued (default: 3h0m0s)
+      # - --txpool.lifetime=3h0m0s
+      # Megabytes of memory allocated to internal caching (default: 1024)
+      - --cache=65536
+      # Maximum number of network peers (network disabled if set to 0) (default: 25)
+      - --maxpeers=150
+      # Blockchain sync mode ("fast", "full", or "light")
+      - --syncmode=snap
+      # Blockchain garbage collection mode ("full", "archive") (default: "full")
+      # - --gcmode=full
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "10"
+  prysm:
+    image: gcr.io/prysmaticlabs/prysm/beacon-chain:stable
+    restart: "no"
+    ports:
+      - "8545:8545"
+      - "3500:3500"
+      - "4000:4000"
+      - "13002:13002"
+      - "12002:12002/udp"
+    stop_signal: SIGINT
+    stop_grace_period: 30m
+    depends_on:
+      - geth
+    volumes:
+      - /eth:/eth
+    command: [
+      "--rpc-host=0.0.0.0",
+      "--grpc-gateway-host=0.0.0.0",
+      "--grpc-gateway-port=3500",
+      "--grpc-gateway-corsdomain=http://node-status.mevs.cc:8888,http://localhost:4200,http://localhost:7500,http://127.0.0.1:4200,http://127.0.0.1:7500,http://0.0.0.0:4200,http://0.0.0.0:7500,http://localhost:3000,http://0.0.0.0:3000,http://127.0.0.1:3000",
+      "--monitoring-host=0.0.0.0",
+      "--p2p-tcp-port=13002",
+      "--p2p-udp-port=12002",
+      "--accept-terms-of-use",
+      "--execution-endpoint=/eth/master/geth.ipc",
+      "--datadir=/eth/cs/master"
+    ]
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "10"
