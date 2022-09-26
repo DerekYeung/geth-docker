@@ -1,0 +1,58 @@
+version: "3"
+
+services:
+  geth:
+    image: ghcr.io/bnb-chain/bsc:1.1.12
+    restart: unless-stopped
+    ports:
+      - "30313:30313"
+      - "30313:30313/udp"
+      - "8891:8891"
+      - "8892:8892"
+    volumes:
+      - /data:/data
+    stop_signal: SIGINT
+    stop_grace_period: 2m
+    command:
+      - --port=30313
+      - --networkid=56
+      - --http
+      - --http.api
+      - "eth,net,web3"
+      - --http.addr=0.0.0.0
+      - --http.vhosts=*
+      - --http.port=8891
+      - --http.corsdomain=*
+      - --ws
+      - --ws.origins=*
+      - --ws.addr=0.0.0.0
+      - --ws.port=8892
+      - --ws.api
+      - "eth,net,web3"
+      - --config
+      - "/data/config.toml"
+      - --datadir
+      - "/data/master"
+      # Minimum number of executable transaction slots guaranteed per account (default: 16)
+      # - --txpool.accountslots=16
+      # Maximum number of non-executable transaction slots for all accounts (default: 1024)
+      # --txpool.globalqueue=1024
+      # Maximum number of executable transaction slots for all accounts (default: 4096)
+      # - --txpool.globalslots=10000
+      # Maximum amount of time non-executable transaction are queued (default: 3h0m0s)
+      # - --txpool.lifetime=3h0m0s
+      # Megabytes of memory allocated to internal caching (default: 1024)
+      - --cache=65536
+      - --rpc.allow-unprotected-txs
+      - --txlookuplimit=0
+      # Maximum number of network peers (network disabled if set to 0) (default: 25)
+      - --maxpeers=150
+      # Blockchain sync mode ("fast", "full", or "light")
+      - --syncmode=fast
+      # Blockchain garbage collection mode ("full", "archive") (default: "full")
+      # - --gcmode=full
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "10"
