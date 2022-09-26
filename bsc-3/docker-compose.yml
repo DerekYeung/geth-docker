@@ -11,7 +11,7 @@ services:
       - "8892:8892"
     volumes:
       - /data:/data
-      - config:/bsc/config
+      - /bsc/config:/bsc/config
     stop_signal: SIGINT
     stop_grace_period: 2m
     command:
