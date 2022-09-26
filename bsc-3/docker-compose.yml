@@ -10,7 +10,7 @@ services:
       - "8891:8891"
       - "8892:8892"
     volumes:
-      - /bsc:/bsc
+      - /data:/data
       - /bsc/config:/bsc/config
     stop_signal: SIGINT
     stop_grace_period: 2m
@@ -31,9 +31,9 @@ services:
       - --ws.api
       - "eth,net,web3"
       - --config
-      - "/bsc/config.toml"
+      - "/data/config.toml"
       - --datadir
-      - "/bsc/master"
+      - "/data/master"
       # Minimum number of executable transaction slots guaranteed per account (default: 16)
       # - --txpool.accountslots=16
       # Maximum number of non-executable transaction slots for all accounts (default: 1024)
