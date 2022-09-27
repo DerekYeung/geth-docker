@@ -5,8 +5,8 @@ services:
     image: ghcr.io/bnb-chain/bsc:1.1.12
     restart: unless-stopped
     ports:
-      - "30313:30313"
-      - "30313:30313/udp"
+      - "30311:30311"
+      - "30311:30311/udp"
       - "8891:8891"
       - "8892:8892"
     volumes:
@@ -15,7 +15,7 @@ services:
     stop_signal: SIGINT
     stop_grace_period: 2m
     command:
-      - --port=30313
+      - --port=30311
       - --networkid=56
       - --http
       - --http.api
