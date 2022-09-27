@@ -46,6 +46,7 @@ services:
       - --cache=65536
       - --rpc.allow-unprotected-txs
       - --txlookuplimit=0
+      - --diffsync
       # Maximum number of network peers (network disabled if set to 0) (default: 25)
       - --maxpeers=150
       # Blockchain sync mode ("fast", "full", or "light")
