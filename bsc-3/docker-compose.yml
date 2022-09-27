@@ -2,7 +2,7 @@ version: "3"
 
 services:
   geth:
-    image: ghcr.io/bnb-chain/bsc:1.1.12
+    image: bsc
     restart: unless-stopped
     ports:
       - "30311:30311"
@@ -49,7 +49,7 @@ services:
       # Maximum number of network peers (network disabled if set to 0) (default: 25)
       - --maxpeers=150
       # Blockchain sync mode ("fast", "full", or "light")
-      - --syncmode=full
+      - --syncmode=snap
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
     logging:
