@@ -50,7 +50,7 @@ services:
       # Maximum number of network peers (network disabled if set to 0) (default: 25)
       - --maxpeers=150
       # Blockchain sync mode ("fast", "full", or "light")
-      - --syncmode=snap
+      - --syncmode=full
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
     logging:
