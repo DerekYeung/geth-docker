@@ -15,6 +15,8 @@ services:
     stop_signal: SIGINT
     stop_grace_period: 2m
     command:
+      - --config
+      - "/bsc/config/config.toml"
       - --port=30311
       - --networkid=56
       - --http
@@ -33,7 +35,7 @@ services:
       - --config
       - "/data/config.toml"
       - --datadir
-      - "/data/master"
+      - "/data/bscmain"
       # Minimum number of executable transaction slots guaranteed per account (default: 16)
       # - --txpool.accountslots=16
       # Maximum number of non-executable transaction slots for all accounts (default: 1024)
@@ -45,13 +47,16 @@ services:
       # Megabytes of memory allocated to internal caching (default: 1024)
       - --cache=65536
       - --rpc.allow-unprotected-txs
+      - --txpool.reannouncetime=5m
       - --txlookuplimit=0
       - --diffsync
-      - --bootnodes=enode://1cc4534b14cfe351ab740a1418ab944a234ca2f702915eadb7e558a02010cb7c5a8c295a3b56bcefa7701c07752acd5539cb13df2aab8ae2d98934d712611443@52.71.43.172:30311,enode://28b1d16562dac280dacaaf45d54516b85bc6c994252a9825c5cc4e080d3e53446d05f63ba495ea7d44d6c316b54cd92b245c5c328c37da24605c4a93a0d099c4@34.246.65.14:30311,enode://5a7b996048d1b0a07683a949662c87c09b55247ce774aeee10bb886892e586e3c604564393292e38ef43c023ee9981e1f8b335766ec4f0f256e57f8640b079d5@35.73.137.11:30311
       # Maximum number of network peers (network disabled if set to 0) (default: 25)
       - --maxpeers=150
       # Blockchain sync mode ("fast", "full", or "light")
-      - --syncmode=snap
+      - --syncmode=full
+      - --tries-verify-mode=none
+      - --pruneancient=true
+      - --diffblock=5000
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
     logging:
