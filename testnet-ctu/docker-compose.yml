@@ -79,8 +79,8 @@ services:
       "--p2p-tcp-port=13004",
       "--p2p-udp-port=12004",
       "--accept-terms-of-use",
-      "--execution-endpoint=/eth/master/geth.ipc",
-      "--datadir=/eth/cs/master",
+      "--execution-endpoint=/eth/testnet/geth.ipc",
+      "--datadir=/eth/cs/testnet",
       "--prater",
       "--genesis-state=/eth/cs/genesis.ssz"
     ]
