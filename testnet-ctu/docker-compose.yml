@@ -14,7 +14,7 @@ services:
     stop_signal: SIGINT
     stop_grace_period: 2m
     command:
-      - --port=30304
+      - --port=30303
       - --goerli
       - --http
       - --http.api
@@ -48,6 +48,42 @@ services:
       - --syncmode=snap
       # Blockchain garbage collection mode ("full", "archive") (default: "full")
       # - --gcmode=full
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "10"
+  prysm:
+    image: gcr.io/prysmaticlabs/prysm/beacon-chain:stable
+    restart: "no"
+    ports:
+      - "8545:8545"
+      - "3500:3500"
+      - "4000:4000"
+      - "8080:8080"
+      - "13003:13003"
+      - "12003:12003/udp"
+    stop_signal: SIGINT
+    stop_grace_period: 30m
+    depends_on:
+      - geth
+    volumes:
+      - /eth:/eth
+    command: [
+      "--p2p-host-ip=118.113.189.47",
+      "--rpc-host=0.0.0.0",
+      "--grpc-gateway-host=0.0.0.0",
+      "--grpc-gateway-port=3500",
+      "--grpc-gateway-corsdomain=http://node-status.mevs.cc:8888,http://localhost:4200,http://localhost:7500,http://127.0.0.1:4200,http://127.0.0.1:7500,http://0.0.0.0:4200,http://0.0.0.0:7500,http://localhost:3000,http://0.0.0.0:3000,http://127.0.0.1:3000",
+      "--monitoring-host=0.0.0.0",
+      "--p2p-tcp-port=13004",
+      "--p2p-udp-port=12004",
+      "--accept-terms-of-use",
+      "--execution-endpoint=/eth/master/geth.ipc",
+      "--datadir=/eth/cs/master",
+      "--prater",
+      "--genesis-state=/eth/cs/genesis.ssz"
+    ]
     logging:
       driver: "json-file"
       options:
