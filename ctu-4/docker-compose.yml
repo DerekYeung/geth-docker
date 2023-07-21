@@ -71,7 +71,7 @@ services:
     volumes:
       - /eth:/eth
     command: [
-      "--p2p-host-ip=118.113.189.47",
+      "--p2p-host-ip=110.184.174.10",
       "--rpc-host=0.0.0.0",
       "--grpc-gateway-host=0.0.0.0",
       "--grpc-gateway-port=3500",
@@ -82,7 +82,7 @@ services:
       "--accept-terms-of-use",
       "--execution-endpoint=/eth/master/geth.ipc",
       "--datadir=/eth/cs/master",
-      "--peer=/ip4/118.113.189.47/tcp/13001/p2p/16Uiu2HAm5Qxi9vwHz4znkButRcxZ14p4LqjJdpucH9nfmLxhwKTC"
+      "--peer=/ip4/110.184.174.10/tcp/13001/p2p/16Uiu2HAm5Qxi9vwHz4znkButRcxZ14p4LqjJdpucH9nfmLxhwKTC"
     ]
     logging:
       driver: "json-file"

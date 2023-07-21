@@ -71,7 +71,7 @@ services:
     volumes:
       - /eth:/eth
     command: [
-      "--p2p-host-ip=118.113.189.47",
+      "--p2p-host-ip=110.184.174.10",
       "--rpc-host=0.0.0.0",
       "--grpc-gateway-host=0.0.0.0",
       "--grpc-gateway-port=3500",
