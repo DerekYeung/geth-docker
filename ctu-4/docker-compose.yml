@@ -55,10 +55,6 @@ services:
         max-file: "10"
   prysm:
     image: gcr.io/prysmaticlabs/prysm/beacon-chain:stable
-    environment:
-      - http_proxy=http://host.docker.internal:7893
-      - https_proxy=http://host.docker.internal:7893
-      - all_proxy=socks5://host.docker.internal:7893
     ports:
       - "8545:8545"
       - "3500:3500"
