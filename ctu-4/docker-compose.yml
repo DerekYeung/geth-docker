@@ -55,6 +55,7 @@ services:
         max-file: "10"
   prysm:
     image: gcr.io/prysmaticlabs/prysm/beacon-chain:stable
+    network_mode: "host"
     ports:
       - "8545:8545"
       - "3500:3500"
