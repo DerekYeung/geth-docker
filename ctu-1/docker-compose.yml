@@ -56,7 +56,8 @@ services:
         max-file: "10"
   prysm:
     image: gcr.io/prysmaticlabs/prysm/beacon-chain:stable
-    restart: "no"
+    network_mode: "host"
+    restart: "always"
     ports:
       - "8545:8545"
       - "3500:3500"
@@ -81,7 +82,8 @@ services:
       "--p2p-udp-port=12001",
       "--accept-terms-of-use",
       "--execution-endpoint=/eth/master/geth.ipc",
-      "--datadir=/eth/cs/master"
+      "--datadir=/eth/cs/master",
+      "--checkpoint-sync-url=https://mainnet-checkpoint-sync.stakely.io"
     ]
     logging:
       driver: "json-file"
