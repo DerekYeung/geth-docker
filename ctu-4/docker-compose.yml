@@ -56,6 +56,7 @@ services:
   prysm:
     image: gcr.io/prysmaticlabs/prysm/beacon-chain:stable
     network_mode: "host"
+    restart: "always"
     ports:
       - "8545:8545"
       - "3500:3500"
