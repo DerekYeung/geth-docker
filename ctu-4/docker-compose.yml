@@ -85,7 +85,7 @@ services:
       "--execution-endpoint=/eth/master/geth.ipc",
       "--datadir=/eth/cs/master",
       "--peer=/ip4/110.184.174.10/tcp/13001/p2p/16Uiu2HAm5Qxi9vwHz4znkButRcxZ14p4LqjJdpucH9nfmLxhwKTC",
-      "--checkpoint-sync-url=https://mainnet-checkpoint-sync.stakely.io	"
+      "--checkpoint-sync-url=https://mainnet-checkpoint-sync.stakely.io"
     ]
     logging:
       driver: "json-file"
