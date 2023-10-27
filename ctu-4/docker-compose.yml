@@ -55,6 +55,10 @@ services:
         max-file: "10"
   prysm:
     image: gcr.io/prysmaticlabs/prysm/beacon-chain:stable
+    environment:
+      - http_proxy=http://127.0.0.1:7893
+      - https_proxy=http://127.0.0.1:7893
+      - all_proxy=socks5://127.0.0.1:7893
     ports:
       - "8545:8545"
       - "3500:3500"
@@ -80,7 +84,8 @@ services:
       "--accept-terms-of-use",
       "--execution-endpoint=/eth/master/geth.ipc",
       "--datadir=/eth/cs/master",
-      "--peer=/ip4/110.184.174.10/tcp/13001/p2p/16Uiu2HAm5Qxi9vwHz4znkButRcxZ14p4LqjJdpucH9nfmLxhwKTC"
+      "--peer=/ip4/110.184.174.10/tcp/13001/p2p/16Uiu2HAm5Qxi9vwHz4znkButRcxZ14p4LqjJdpucH9nfmLxhwKTC",
+      "--checkpoint-sync-url=https://mainnet-checkpoint-sync.stakely.io	"
     ]
     logging:
       driver: "json-file"
